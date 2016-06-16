@@ -3,4 +3,4 @@
 .RData
 .Ruserdata
 sanitize.R
-.xlsx
+data/*.xlsx
