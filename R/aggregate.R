@@ -29,4 +29,5 @@ cleanData <- FERPAnate(cleanData)
 cleanData$User.ID <- NULL
 
 # Save output for later analysis
-saveRDS(cleanData, file = "./processed/cleanData.rds")
+#saveRDS(cleanData, file = "./processed/cleanData.rds")
+write.csv(cleanData, file = "./processed/cleanData.csv")

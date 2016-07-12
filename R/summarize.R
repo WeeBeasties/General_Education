@@ -26,7 +26,8 @@ weighted.var.se <- function(x, w, na.rm=FALSE)
 	return(myOutput)
 }
 
-myData <- readRDS("./processed/cleanData.rds")
+#myData <- readRDS("./processed/cleanData.rds")
+myData <- read.csv("./processed/cleanData.csv")
 myData$SCI1 <- as.numeric(levels(myData$SCI1))[myData$SCI1]
 
 dataTable <- myData %>%
