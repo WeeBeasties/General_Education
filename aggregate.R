@@ -21,6 +21,7 @@ for (i in 1:as.numeric(length(fileList))){
 	thisDataSet$file = i
 	cleanData <- rbind(cleanData, thisDataSet)
 	rm(thisDataSet)
+	file.remove(paste("./data/",fileList[i],sep=""))
 }
 
 # Remove personally identifiable information and randomize row order
