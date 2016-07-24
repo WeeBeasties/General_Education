@@ -27,6 +27,8 @@ for (i in 1:as.numeric(length(fileList))){
 # Remove personally identifiable information and randomize row order
 cleanData$User.ID <- NULL
 cleanData$Student.Name <- NULL
+cleanData$Total <- NULL
+cleanData$Mean <- NULL
 cleanData <- cleanData[sample(nrow(cleanData)),]
 
 # Remove points columns if they exist
