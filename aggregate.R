@@ -18,21 +18,17 @@ cleanData <- NULL
 for (i in 1:as.numeric(length(fileList))){
 	thisDataSet <- read.xlsx(paste("./data/",fileList[i],sep=""), sheetName="scores", header=TRUE)
 	thisDataSet <- thisDataSet[!is.na(thisDataSet$Student.Name),]
-	thisDataSet$file = i
+	thisDataSet$Order = i
 	cleanData <- rbind(cleanData, thisDataSet)
 	rm(thisDataSet)
 	file.remove(paste("./data/",fileList[i],sep=""))
+	print(paste("Processed file",i))
 }
 
-# Remove personally identifiable information and randomize row order
-cleanData$User.ID <- NULL
-cleanData$Student.Name <- NULL
-cleanData$Total <- NULL
-cleanData$Mean <- NULL
-cleanData <- cleanData[sample(nrow(cleanData)),]
+# Clean up extraneous parameters, remove personally identifiable information, and randomize row order
+source("./sanitize.R")
+cleanData <- FERPAnate(cleanData)
 
-# Remove points columns if they exist
-cleanData$PT1 = cleanData$PT2 = cleanData$PT3 = cleanData$PT4 = NULL
 
 # Save output for later analysis
 #saveRDS(cleanData, file = "./processed/cleanData.rds")
